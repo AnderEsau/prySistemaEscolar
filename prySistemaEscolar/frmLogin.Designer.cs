@@ -87,6 +87,7 @@
             btnAcceder.TabIndex = 4;
             btnAcceder.Text = "Acceder";
             btnAcceder.UseVisualStyleBackColor = true;
+            btnAcceder.Click += btnAcceder_Click;
             // 
             // btnSalir
             // 
@@ -97,6 +98,7 @@
             btnSalir.TabIndex = 5;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
             // frmLogin
             // 
