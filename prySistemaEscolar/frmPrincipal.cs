@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace prySistemaEscolar
+{
+    public partial class frmPrincipal : Form
+    {
+        public frmPrincipal()
+        {
+            InitializeComponent();
+
+        }
+
+        private void pcbGeneral_MouseDown(object mipictureSeleccionado, MouseEventArgs e)
+        {
+            PictureBox pcb = (PictureBox)mipictureSeleccionado;
+            pcb.Location = new Point(pcb.Location.X + 3, pcb.Location.Y + 3);
+        }
+
+        private void pcbGeneral_MouseUp(object mipictureSeleccionado, MouseEventArgs e)
+        {
+            PictureBox pcb = (PictureBox)mipictureSeleccionado;
+            pcb.Location = new Point(pcb.Location.X - 3, pcb.Location.Y - 3);
+        }
+
+
+        private void pcbSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            pcbAlumnos.Parent = pcbMenu;
+            pcbCarreras.Parent = pcbMenu;
+            pcbDocentes.Parent = pcbMenu;
+            pcbUsuarios.Parent = pcbMenu;
+            pcbSalir.Parent = pcbMenu;
+            pcbAlumnos.BackColor = Color.Transparent;
+            pcbCarreras.BackColor = Color.Transparent;
+            pcbDocentes.BackColor = Color.Transparent;
+            pcbUsuarios.BackColor = Color.Transparent;
+            pcbSalir.BackColor = Color.Transparent;
+        }
+    }
+}
