@@ -15,7 +15,31 @@ namespace prySistemaEscolar
         public string Usuario { get => usuario; set => usuario = value; }
         public string Password { get => password; set => password = value; }
 
-        public static string perfil;
+        //Atributo estático
+        private static string perfil;
+        private static bool esAdministrador;
+        private static bool esDocente;
+
+        //Propiedad estático
+        public static bool EsAdministrador { get => esAdministrador; }
+        public static bool EsDocente { get => esDocente; }
+
+        public void AsignarPermisos()
+        {
+            switch (perfil)
+            {
+                case "Administrador":
+                    
+                    break;
+                case "Docente":
+                   
+                    break;
+                default:
+                  
+                    break;
+
+            }
+        }
 
         public bool ValidarAcceso()
         {
