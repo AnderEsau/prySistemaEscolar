@@ -53,6 +53,10 @@ namespace prySistemaEscolar
             //Verificando permisos
             pcbCarreras.Enabled = clsLogin.EsAdministrador;
             pcbDocentes.Enabled = clsLogin.EsAdministrador;
+            pcbUsuarios.Enabled = clsLogin.EsAdministrador;
+
+            pcbAlumnos.Enabled = clsLogin.EsAdministrador || clsLogin.EsDocente;
+
 
         }
     }
