@@ -11,9 +11,9 @@ namespace prySistemaEscolar
     internal class clsConexion
     {
         private string host = "189.240.192.140";
-        private string bd = "bdescuela3b";
-        private string usuario = "terceroB";
-        private string password = "tercero@B";
+        private string bd = "bdescuelagbequipo4";
+        private string usuario = "gbEquipo4";
+        private string password = "grupo4";
         private string puerto = "3306";
 
         private string cadenaConexion => $"server={host};database={bd};user={usuario};password={password};port={puerto};";
