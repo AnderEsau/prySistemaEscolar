@@ -51,8 +51,8 @@ namespace prySistemaEscolar
                 clsConexion conexionBD = new clsConexion();
                 using (var conexion = conexionBD.AbrirConexion())
                 {
-                    string sql = "SELECT perfil FROM tblUsuarios " +
-                                 "WHERE nombreUsuario = @usuario AND password = @password;";
+                    string sql = "SELECT vchperfil FROM tblUsuarios " +
+                                 "WHERE vchnombreUsuario = @usuario AND vchpassword = MD5(@password;)";
 
                     using (var consulta = new MySqlCommand(sql, conexion))
                     {
@@ -63,11 +63,11 @@ namespace prySistemaEscolar
                         {
                             if (resultado.Read())
                             {
-                                perfil = resultado.GetString("perfil");
+                                perfil = resultado.GetString("vchperfil");
                                 AsignarPermisos();
                                 if (!esAdministrador && !esDocente)
                                 {
-                                    throw new Exception($"El perfil{perfil} no tiene permisos para acceder");
+                                    throw new Exception($"El perfil {perfil} no tiene permisos para acceder");
                                 }
                                 MessageBox.Show("Tu perfil es: " + perfil, "Sistema");
                                 return true;
