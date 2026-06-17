@@ -52,7 +52,7 @@ namespace prySistemaEscolar
                 using (var conexion = conexionBD.AbrirConexion())
                 {
                     string sql = "SELECT vchperfil FROM tblUsuarios " +
-                                 "WHERE vchnombreUsuario = @usuario AND vchpassword = MD5(@password;)";
+                                 "WHERE vchnombreUsuario = @usuario AND vchpassword = MD5(@password);";
 
                     using (var consulta = new MySqlCommand(sql, conexion))
                     {
