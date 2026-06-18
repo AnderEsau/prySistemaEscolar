@@ -81,12 +81,13 @@
             // pcbCarreras
             // 
             pcbCarreras.Image = Properties.Resources.botonCarrera1;
-            pcbCarreras.Location = new Point(59, 209);
+            pcbCarreras.Location = new Point(59, 214);
             pcbCarreras.Name = "pcbCarreras";
             pcbCarreras.Size = new Size(254, 107);
             pcbCarreras.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbCarreras.TabIndex = 3;
             pcbCarreras.TabStop = false;
+            pcbCarreras.Click += pcbCarreras_Click;
             pcbCarreras.MouseDown += pcbGeneral_MouseDown;
             pcbCarreras.MouseUp += pcbGeneral_MouseUp;
             // 
