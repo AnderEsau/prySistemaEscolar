@@ -123,6 +123,36 @@ namespace prySistemaEscolar.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap botoneliminar {
+            get {
+                object obj = ResourceManager.GetObject("botoneliminar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap botonguardar {
+            get {
+                object obj = ResourceManager.GetObject("botonguardar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap botonnuevo {
+            get {
+                object obj = ResourceManager.GetObject("botonnuevo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap botonSalir {
             get {
                 object obj = ResourceManager.GetObject("botonSalir", resourceCulture);
@@ -176,6 +206,26 @@ namespace prySistemaEscolar.Properties {
         internal static System.Drawing.Bitmap fondo_login {
             get {
                 object obj = ResourceManager.GetObject("fondo login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondocarreras {
+            get {
+                object obj = ResourceManager.GetObject("fondocarreras", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondocarrerass {
+            get {
+                object obj = ResourceManager.GetObject("fondocarrerass", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

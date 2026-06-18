@@ -12,6 +12,7 @@ namespace prySistemaEscolar
 {
     public partial class frmPrincipal : Form
     {
+        clsPrincipal principal;
         public frmPrincipal()
         {
             InitializeComponent();
@@ -58,6 +59,12 @@ namespace prySistemaEscolar
             pcbAlumnos.Enabled = clsLogin.EsAdministrador || clsLogin.EsDocente;
 
 
+        }
+
+        private void pcbCarreras_Click(object sender, EventArgs e)
+        {
+            principal= new clsPrincipal();
+            principal.agregarAlContenedor(new frmCarreras(), pnlContenedor);
         }
     }
 }
