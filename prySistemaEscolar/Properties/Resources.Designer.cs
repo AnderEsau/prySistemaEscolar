@@ -183,6 +183,16 @@ namespace prySistemaEscolar.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap botonTutores {
+            get {
+                object obj = ResourceManager.GetObject("botonTutores", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap botonUsuario {
             get {
                 object obj = ResourceManager.GetObject("botonUsuario", resourceCulture);

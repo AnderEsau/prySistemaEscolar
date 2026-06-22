@@ -44,17 +44,22 @@ namespace prySistemaEscolar
             pcbCarreras.Parent = pcbMenu;
             pcbDocentes.Parent = pcbMenu;
             pcbUsuarios.Parent = pcbMenu;
+            pcbTutores.Parent = pcbMenu;
             pcbSalir.Parent = pcbMenu;
+
             pcbAlumnos.BackColor = Color.Transparent;
             pcbCarreras.BackColor = Color.Transparent;
             pcbDocentes.BackColor = Color.Transparent;
             pcbUsuarios.BackColor = Color.Transparent;
+            pcbTutores.BackColor = Color.Transparent;
             pcbSalir.BackColor = Color.Transparent;
+
 
             //Verificando permisos
             pcbCarreras.Enabled = clsLogin.EsAdministrador;
             pcbDocentes.Enabled = clsLogin.EsAdministrador;
             pcbUsuarios.Enabled = clsLogin.EsAdministrador;
+            pcbTutores.Enabled = clsLogin.EsAdministrador;
 
             pcbAlumnos.Enabled = clsLogin.EsAdministrador || clsLogin.EsDocente;
 
