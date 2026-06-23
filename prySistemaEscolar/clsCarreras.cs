@@ -24,12 +24,26 @@ namespace prySistemaEscolar
         {
             tabla = new DataTable();
 
-            clsConexion conexionBD = new clsConexion();
-            var conexion = conexionBD.AbrirConexion();
-            string sql = "select idCarrera AS Clave,nombreCarrera AS Carrera,descripcion AS Descripción from tblCarreras;";
-            consulta = new MySqlDataAdapter(sql, conexion);
-            consulta.Fill(tabla);
+            try
+            {
+                clsConexion conexionBD = new clsConexion();
+                using (var conexion = conexionBD.AbrirConexion())
+                {
+                    string sql = "select idCarrera AS Clave,nombreCarrera AS Carrera,descripcion AS Descripción from tblCarreras;";
+                    using (consulta = new MySqlDataAdapter(sql, conexion))
+                    {
+                        consulta.Fill(tabla);
+                    }//Liberar la consulta
+
+                }//Liberar la conexión 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en la conexion " + ex.Message);
+            }
             return tabla;
+
+
         }
 
         //Metodo para consultar por coincidencia 
