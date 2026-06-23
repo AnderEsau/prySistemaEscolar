@@ -13,9 +13,14 @@ namespace prySistemaEscolar
     public partial class frmCarreras : Form
     {
         clsCarreras carreras;
+        int idCarrera;
         public frmCarreras()
         {
             InitializeComponent();
+            CargarGrid();
+        }
+        public void CargarGrid()
+        {
             carreras = new clsCarreras();
             dgvCarreras.DataSource = null;
             dgvCarreras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -43,6 +48,16 @@ namespace prySistemaEscolar
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void dgvCarreras_SelectionChanged(object sender, EventArgs e)
+        {
+            //Este es el campo oculto que me servirá de referencia para actualizar y eliminar
+            idCarrera = int.Parse(dgvCarreras.CurrentRow.Cells[0].Value.ToString());
+            //Estos son los campos visibles
+            txtNombre.Text = dgvCarreras.CurrentRow.Cells[1].Value.ToString();
+            txtDescripcion.Text = dgvCarreras.CurrentRow.Cells[2].Value.ToString();
+
         }
     }
 }
