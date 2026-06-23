@@ -18,7 +18,7 @@ namespace prySistemaEscolar
         //Usamos un command para insertar o actualizar
         private MySqlCommand comando;
         //Usamos una tabla temporal
-        private DataTable tabla;  
+        private DataTable tabla;
 
 
         //propiedad para el atributo nombreCarrera  
@@ -136,5 +136,41 @@ namespace prySistemaEscolar
             }
             return msg;
         }
+
+
+        public string Eliminar()
+        {
+            string msg = "";
+            try
+            {
+                clsConexion conexionBD = new clsConexion();
+                using (var conexion = conexionBD.AbrirConexion())
+                {
+                    string sql = "DELETE FROM tblCarreras C WHERE C.idCarrera=@idCarrera;";
+                    using (comando = new MySqlCommand(sql, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@idCarrera", idCarrera);
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        if (filasAfectadas > 0)
+                        {
+                            msg = "Datos eliminados correctamente";
+                        }
+                        else
+                        {
+                            msg = "Los datos no se pudieron eliminar";
+                        }
+                    }//Libera la eliminación
+
+                }//Liberar las conexiones
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error " + ex.Message);
+            }
+            return msg;
+        
+        }
     }
-}      
+}    
+    
+ 
