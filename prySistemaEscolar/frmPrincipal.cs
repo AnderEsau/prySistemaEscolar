@@ -65,11 +65,19 @@ namespace prySistemaEscolar
 
 
         }
+        //Se va mostrar el formulario de carreras en el panel contenedor, al momento de que le de click el usuario
 
         private void pcbCarreras_Click(object sender, EventArgs e)
         {
             principal= new clsPrincipal();
             principal.agregarAlContenedor(new frmCarreras(), pnlContenedor);
         }
+        //Se va mostrar el formulario de tutores en el panel contenedor, al momento de que le de click el usuario
+        private void pcbTutores_Click(object sender, EventArgs e)
+        {
+            principal = new clsPrincipal();
+            principal.agregarAlContenedor(new frmTutores(), pnlContenedor);
+        }
+
     }
 }
