@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace prySistemaEscolar
 {
@@ -34,14 +35,14 @@ namespace prySistemaEscolar
                 MessageBox.Show(ex.Message);
             }
         }
-        private void txt.Tutor_TextChanged(object sender, EventArgs e)
+        private void txtNombreTutor_TextChanged(object sender, EventArgs e)
         {
             tutores = new clsTutores();
             dgvTutores.DataSource = null;
             dgvTutores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             try
             {
-                tutores.NombreTutor = txt.NombreTutor.Text;
+                tutores.NombreTutor = txtNombreTutor.Text;
                 dgvTutores.DataSource = tutores.Consultar();
             }
             catch (Exception ex)
@@ -54,12 +55,11 @@ namespace prySistemaEscolar
             //Este es el campo oculto que me servirá de referencia para actualizar y eliminar
             idTutor = int.Parse(dgvTutores.CurrentRow.Cells[0].Value.ToString());
             //Estos son los campos visibles
-            txtNombre.Text = dgvTutores.CurrentRow.Cells[1].Value.ToString();
+            txtNombreT.Text = dgvTutores.CurrentRow.Cells[1].Value.ToString();
             txtParentesco.Text = dgvTutores.CurrentRow.Cells[2].Value.ToString();
-            txtDireccion.text = dgvTutores.CurrentRow.Cells[3].Value.ToString();
+            txtDireccion.Text = dgvTutores.CurrentRow.Cells[3].Value.ToString();
             txtTelefono.Text = dgvTutores.CurrentRow.Cells[4].Value.ToString();
             txtCorreo.Text = dgvTutores.CurrentRow.Cells[5].Value.ToString();
-            txtBuscarTutor.text = dgvTutores.CurrentRow.Cells[6].Value.ToString();
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -67,16 +67,15 @@ namespace prySistemaEscolar
             try
             {
                 int tipoOperacion = idTutor == 0 ? 0 : 1;
-                tutores.idTutor = idTutor;
-                tutores.Nombre = txtNombreTutor.Text;
+                tutores.IdTutor = idTutor;
+                tutores.NombreTutor = txtNombreT.Text;
                 tutores.Parentesco = txtParentesco.Text;
                 tutores.Direccion = txtDireccion.Text;
                 tutores.Telefono = txtTelefono.Text;
                 tutores.Correo = txtCorreo.Text;
-                tutores.BuscarTutor = txtNombreTutor.Text;
                 string msg = "";
 
-                if (tipoOperacion !== 0)
+                if (tipoOperacion != 0)
                 {
                     var resp = MessageBox.Show("Confirmar que se desea actualizar el dato seleccionado", "ALERTA!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resp == DialogResult.Yes)
@@ -101,19 +100,19 @@ namespace prySistemaEscolar
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             idTutor = 0;
-            txtTutor.Clear();
+            txtNombreT.Clear();
             txtParentesco.Clear();
-            txtDireccion.Focus();
+            txtDireccion.Clear();
             txtTelefono.Clear();
             txtCorreo.Clear();
-            txtNombreTutor.Focus();
+            txtNombreT.Focus();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-                tutores.idTutor = idTutor;
+                tutores.IdTutor = idTutor;
                 var resp = MessageBox.Show("Confirmar que se desea eliminar el dato seleccionado", "ALERTA!!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
                 if (resp == DialogResult.Yes)
                 {
