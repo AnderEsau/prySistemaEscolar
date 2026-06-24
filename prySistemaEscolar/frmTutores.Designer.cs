@@ -41,8 +41,10 @@
             txtEliminar = new Button();
             dgvTutores = new DataGridView();
             txtNombreTutor = new TextBox();
+            pictureBox1 = new PictureBox();
             pnlAgrupaControles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTutores).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblTutores
@@ -119,7 +121,7 @@
             // 
             btnNuevo.BackgroundImage = (Image)resources.GetObject("btnNuevo.BackgroundImage");
             btnNuevo.BackgroundImageLayout = ImageLayout.Stretch;
-            btnNuevo.Location = new Point(3, 219);
+            btnNuevo.Location = new Point(15, 219);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(96, 46);
             btnNuevo.TabIndex = 5;
@@ -129,18 +131,17 @@
             // 
             txtGuardar.BackgroundImage = (Image)resources.GetObject("txtGuardar.BackgroundImage");
             txtGuardar.BackgroundImageLayout = ImageLayout.Stretch;
-            txtGuardar.Location = new Point(156, 219);
+            txtGuardar.Location = new Point(158, 219);
             txtGuardar.Name = "txtGuardar";
             txtGuardar.Size = new Size(96, 46);
             txtGuardar.TabIndex = 4;
             txtGuardar.UseVisualStyleBackColor = true;
-            txtGuardar.Click += button2_Click_1;
             // 
             // txtEliminar
             // 
             txtEliminar.BackgroundImage = (Image)resources.GetObject("txtEliminar.BackgroundImage");
             txtEliminar.BackgroundImageLayout = ImageLayout.Stretch;
-            txtEliminar.Location = new Point(315, 219);
+            txtEliminar.Location = new Point(305, 219);
             txtEliminar.Name = "txtEliminar";
             txtEliminar.Size = new Size(96, 46);
             txtEliminar.TabIndex = 3;
@@ -163,6 +164,16 @@
             txtNombreTutor.Size = new Size(164, 35);
             txtNombreTutor.TabIndex = 12;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(796, 33);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(100, 80);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 13;
+            pictureBox1.TabStop = false;
+            // 
             // frmTutores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -170,6 +181,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(940, 449);
+            Controls.Add(pictureBox1);
             Controls.Add(txtNombreTutor);
             Controls.Add(dgvTutores);
             Controls.Add(pnlAgrupaControles);
@@ -180,6 +192,7 @@
             pnlAgrupaControles.ResumeLayout(false);
             pnlAgrupaControles.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTutores).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -197,5 +210,6 @@
         private TextBox txtParentesco;
         private DataGridView dgvTutores;
         private TextBox txtNombreTutor;
+        private PictureBox pictureBox1;
     }
 }
