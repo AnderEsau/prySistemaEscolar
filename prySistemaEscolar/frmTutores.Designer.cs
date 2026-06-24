@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTutores));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblTutores = new Label();
             pnlAgrupaControles = new Panel();
             txtCorreo = new TextBox();
@@ -51,7 +53,7 @@
             // 
             lblTutores.AutoSize = true;
             lblTutores.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTutores.Location = new Point(280, 33);
+            lblTutores.Location = new Point(388, 35);
             lblTutores.Name = "lblTutores";
             lblTutores.Size = new Size(196, 65);
             lblTutores.TabIndex = 3;
@@ -126,6 +128,7 @@
             btnNuevo.Size = new Size(96, 46);
             btnNuevo.TabIndex = 5;
             btnNuevo.UseVisualStyleBackColor = true;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // btnGuardar
             // 
@@ -136,6 +139,7 @@
             btnGuardar.Size = new Size(96, 46);
             btnGuardar.TabIndex = 4;
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnEliminar
             // 
@@ -146,14 +150,35 @@
             btnEliminar.Size = new Size(96, 46);
             btnEliminar.TabIndex = 3;
             btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // dgvTutores
             // 
+            dgvTutores.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(255, 224, 192);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Teal;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvTutores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvTutores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Teal;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvTutores.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvTutores.EnableHeadersVisualStyles = false;
             dgvTutores.Location = new Point(491, 154);
             dgvTutores.Name = "dgvTutores";
+            dgvTutores.RowTemplate.Height = 35;
             dgvTutores.Size = new Size(392, 244);
             dgvTutores.TabIndex = 11;
+            dgvTutores.SelectionChanged += dgvTutores_SelectionChanged;
             // 
             // txtNombreTutor
             // 
@@ -163,11 +188,12 @@
             txtNombreTutor.PlaceholderText = "Buscar Tutor";
             txtNombreTutor.Size = new Size(164, 35);
             txtNombreTutor.TabIndex = 12;
+            txtNombreTutor.TextChanged += txtNombreTutor_TextChanged;
             // 
             // pcbLogo
             // 
             pcbLogo.Image = (Image)resources.GetObject("pcbLogo.Image");
-            pcbLogo.Location = new Point(796, 33);
+            pcbLogo.Location = new Point(786, 35);
             pcbLogo.Name = "pcbLogo";
             pcbLogo.Size = new Size(100, 80);
             pcbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -186,6 +212,7 @@
             Controls.Add(dgvTutores);
             Controls.Add(pnlAgrupaControles);
             Controls.Add(lblTutores);
+            DoubleBuffered = true;
             Margin = new Padding(2);
             Name = "frmTutores";
             Text = "Registro de Tutores";
