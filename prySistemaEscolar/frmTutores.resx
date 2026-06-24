@@ -1275,7 +1275,7 @@
         aWlpaWlplU+an7S0tLS0tLS0yifNT1paWlpaWlpa5RHR/wNn+oRLr4uiQwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="txtGuardar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnGuardar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAArYAAAEkCAIAAABVJ+VuAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAy
         vQAAMr0BBUlDfwAA/7JJREFUeF7sfQdgFMf5/V5Xp3ewce+J80tz7z12kn/i3kviintLYiduIECiu6Q5
@@ -2447,7 +2447,7 @@
         RK5CYII=
 </value>
   </data>
-  <data name="txtEliminar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnEliminar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAArwAAAEqCAIAAAB4DxTXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAy
         uQAAMrkB+rTEbQAA/7JJREFUeF7sXQWAHEXWrvGZtbi7EMMhggeXw4MEh7sfDgJ3aBSHOzgOOA6H4BDi
@@ -3675,7 +3675,7 @@
         rkJggg==
 </value>
   </data>
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pcbLogo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsN
         DhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQU
