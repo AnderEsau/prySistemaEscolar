@@ -223,6 +223,16 @@ namespace prySistemaEscolar.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fondoAlumnos {
+            get {
+                object obj = ResourceManager.GetObject("fondoAlumnos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fondocarreras {
             get {
                 object obj = ResourceManager.GetObject("fondocarreras", resourceCulture);

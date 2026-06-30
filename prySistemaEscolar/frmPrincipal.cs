@@ -79,5 +79,11 @@ namespace prySistemaEscolar
             principal.agregarAlContenedor(new frmTutores(), pnlContenedor);
         }
 
+        //Se va mostrar el formulario de alumnos en el panel contenedor, al momento de que le de click el usuario
+        private void pcbAlumnos_Click(object sender, EventArgs e)
+        {
+            principal = new clsPrincipal();
+            principal.agregarAlContenedor(new frmAlumnos(), pnlContenedor);
+        }
     }
 }
