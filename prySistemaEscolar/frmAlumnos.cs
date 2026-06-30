@@ -12,6 +12,9 @@ namespace prySistemaEscolar
 {
     public partial class frmAlumnos : Form
     {
+        clsAlumnos alumnos;
+
+
         public frmAlumnos()
         {
             InitializeComponent();
