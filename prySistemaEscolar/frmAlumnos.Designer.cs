@@ -154,7 +154,7 @@
             // pnlAlumno
             // 
             pnlAlumno.BackColor = SystemColors.ActiveCaption;
-            pnlAlumno.BorderStyle = BorderStyle.FixedSingle;
+            pnlAlumno.BorderStyle = BorderStyle.Fixed3D;
             pnlAlumno.Controls.Add(cmbCarrera);
             pnlAlumno.Controls.Add(cmbTutor);
             pnlAlumno.Controls.Add(txtPromedioBachiller);
@@ -165,7 +165,7 @@
             pnlAlumno.Controls.Add(txtAPaterno);
             pnlAlumno.Controls.Add(txtNombre);
             pnlAlumno.Controls.Add(txtMatricula);
-            pnlAlumno.Location = new Point(35, 67);
+            pnlAlumno.Location = new Point(35, 87);
             pnlAlumno.Name = "pnlAlumno";
             pnlAlumno.Size = new Size(522, 205);
             pnlAlumno.TabIndex = 10;
@@ -173,11 +173,11 @@
             // pnlUsuario
             // 
             pnlUsuario.BackColor = SystemColors.ActiveCaption;
-            pnlUsuario.BorderStyle = BorderStyle.FixedSingle;
+            pnlUsuario.BorderStyle = BorderStyle.Fixed3D;
             pnlUsuario.Controls.Add(cmbPerfil);
             pnlUsuario.Controls.Add(txtPassword);
             pnlUsuario.Controls.Add(txtUsuario);
-            pnlUsuario.Location = new Point(563, 67);
+            pnlUsuario.Location = new Point(563, 87);
             pnlUsuario.Name = "pnlUsuario";
             pnlUsuario.Size = new Size(256, 170);
             pnlUsuario.TabIndex = 11;
@@ -214,7 +214,7 @@
             // 
             lblAlumno.AutoSize = true;
             lblAlumno.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            lblAlumno.Location = new Point(35, 35);
+            lblAlumno.Location = new Point(35, 55);
             lblAlumno.Name = "lblAlumno";
             lblAlumno.Size = new Size(83, 25);
             lblAlumno.TabIndex = 12;
@@ -224,7 +224,7 @@
             // 
             lblUsuario.AutoSize = true;
             lblUsuario.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            lblUsuario.Location = new Point(729, 35);
+            lblUsuario.Location = new Point(729, 55);
             lblUsuario.Name = "lblUsuario";
             lblUsuario.Size = new Size(81, 25);
             lblUsuario.TabIndex = 13;
@@ -234,7 +234,7 @@
             // 
             btnEliminar.BackgroundImage = (Image)resources.GetObject("btnEliminar.BackgroundImage");
             btnEliminar.BackgroundImageLayout = ImageLayout.Stretch;
-            btnEliminar.Location = new Point(387, 275);
+            btnEliminar.Location = new Point(387, 295);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(96, 46);
             btnEliminar.TabIndex = 16;
@@ -244,7 +244,7 @@
             // 
             btnGuardar.BackgroundImage = (Image)resources.GetObject("btnGuardar.BackgroundImage");
             btnGuardar.BackgroundImageLayout = ImageLayout.Stretch;
-            btnGuardar.Location = new Point(236, 275);
+            btnGuardar.Location = new Point(236, 295);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(96, 46);
             btnGuardar.TabIndex = 15;
@@ -254,7 +254,7 @@
             // 
             btnNuevo.BackgroundImage = (Image)resources.GetObject("btnNuevo.BackgroundImage");
             btnNuevo.BackgroundImageLayout = ImageLayout.Stretch;
-            btnNuevo.Location = new Point(95, 275);
+            btnNuevo.Location = new Point(95, 295);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(96, 46);
             btnNuevo.TabIndex = 14;
@@ -263,7 +263,7 @@
             // txtNombreAlumno
             // 
             txtNombreAlumno.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            txtNombreAlumno.Location = new Point(678, 286);
+            txtNombreAlumno.Location = new Point(678, 306);
             txtNombreAlumno.Name = "txtNombreAlumno";
             txtNombreAlumno.PlaceholderText = "Buscar Alumno";
             txtNombreAlumno.Size = new Size(227, 35);
@@ -290,27 +290,27 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvAlumnos.DefaultCellStyle = dataGridViewCellStyle2;
             dgvAlumnos.EnableHeadersVisualStyles = false;
-            dgvAlumnos.Location = new Point(35, 327);
+            dgvAlumnos.Location = new Point(35, 347);
             dgvAlumnos.Name = "dgvAlumnos";
             dgvAlumnos.RowHeadersWidth = 62;
             dgvAlumnos.RowTemplate.Height = 35;
-            dgvAlumnos.Size = new Size(870, 101);
+            dgvAlumnos.Size = new Size(870, 117);
             dgvAlumnos.TabIndex = 17;
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitulo.Location = new Point(387, 20);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(139, 40);
+            lblTitulo.Size = new Size(228, 65);
             lblTitulo.TabIndex = 20;
             lblTitulo.Text = "Alumnos";
             // 
             // pcbLogo
             // 
             pcbLogo.Image = (Image)resources.GetObject("pcbLogo.Image");
-            pcbLogo.Location = new Point(825, 20);
+            pcbLogo.Location = new Point(823, 25);
             pcbLogo.Name = "pcbLogo";
             pcbLogo.Size = new Size(90, 98);
             pcbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -323,7 +323,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.fondoAlumnos;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(939, 449);
+            ClientSize = new Size(939, 491);
             Controls.Add(lblTitulo);
             Controls.Add(pcbLogo);
             Controls.Add(txtNombreAlumno);

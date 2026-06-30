@@ -206,7 +206,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(940, 449);
+            ClientSize = new Size(940, 491);
             Controls.Add(pcbLogo);
             Controls.Add(txtNombreTutor);
             Controls.Add(dgvTutores);
