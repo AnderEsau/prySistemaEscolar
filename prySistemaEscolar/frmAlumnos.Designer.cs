@@ -51,7 +51,7 @@
             btnEliminar = new Button();
             btnGuardar = new Button();
             btnNuevo = new Button();
-            txtNombreAlumno = new TextBox();
+            txtMatriculaAlumno = new TextBox();
             dgvAlumnos = new DataGridView();
             lblTitulo = new Label();
             pcbLogo = new PictureBox();
@@ -259,15 +259,17 @@
             btnNuevo.Size = new Size(96, 46);
             btnNuevo.TabIndex = 14;
             btnNuevo.UseVisualStyleBackColor = true;
+            btnNuevo.Click += btnNuevo_Click;
             // 
-            // txtNombreAlumno
+            // txtMatriculaAlumno
             // 
-            txtNombreAlumno.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            txtNombreAlumno.Location = new Point(678, 306);
-            txtNombreAlumno.Name = "txtNombreAlumno";
-            txtNombreAlumno.PlaceholderText = "Buscar Alumno";
-            txtNombreAlumno.Size = new Size(227, 35);
-            txtNombreAlumno.TabIndex = 18;
+            txtMatriculaAlumno.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            txtMatriculaAlumno.Location = new Point(678, 306);
+            txtMatriculaAlumno.Name = "txtMatriculaAlumno";
+            txtMatriculaAlumno.PlaceholderText = "Buscar por matrícula";
+            txtMatriculaAlumno.Size = new Size(227, 35);
+            txtMatriculaAlumno.TabIndex = 18;
+            txtMatriculaAlumno.TextChanged += txtNombreAlumno_TextChanged;
             // 
             // dgvAlumnos
             // 
@@ -296,6 +298,7 @@
             dgvAlumnos.RowTemplate.Height = 35;
             dgvAlumnos.Size = new Size(870, 117);
             dgvAlumnos.TabIndex = 17;
+            dgvAlumnos.SelectionChanged += dgvAlumnos_SelectionChanged;
             // 
             // lblTitulo
             // 
@@ -326,7 +329,7 @@
             ClientSize = new Size(939, 491);
             Controls.Add(lblTitulo);
             Controls.Add(pcbLogo);
-            Controls.Add(txtNombreAlumno);
+            Controls.Add(txtMatriculaAlumno);
             Controls.Add(dgvAlumnos);
             Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
@@ -371,7 +374,7 @@
         private Button btnEliminar;
         private Button btnGuardar;
         private Button btnNuevo;
-        private TextBox txtNombreAlumno;
+        private TextBox txtMatriculaAlumno;
         private DataGridView dgvAlumnos;
         private Label lblTitulo;
         private PictureBox pcbLogo;
