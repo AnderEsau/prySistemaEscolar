@@ -50,12 +50,16 @@ namespace prySistemaEscolar
                 clsConexion conexionBD = new clsConexion();
                 using (var conexion = conexionBD.AbrirConexion())
                 {
+                    // Unimos las 4 tablas mediante INNER JOIN para mostrar descripciones claras en el Grid
+
                     string sql = "SELECT A.matricula AS Matricula, " +
                                  "A.nombreAlumno AS Nombre, " +
                                  "A.apellidoP AS 'A. Paterno', " +
                                  "A.apellidoM AS 'A. Materno', " +
                                  "C.nombreCarrera AS Carrera, " +
                                  "T.nombreTutor AS Tutor, " +
+                                 "U.vchpassword, " + // < - - AQUI SE AGREGA EL PASSWORD
+                                 "U.vchperfil, " +   // < - - AQUI SE AGREGA EL PERFIL
                                  "U.vchnombreUsuario AS Usuario, " +
                                  "A.direccion, A.telefono, A.correo, A.promedioBachillerato, A.idTutor, A.idCarrera, A.idUsuario " +
                                  "FROM tblAlumnos A " +
@@ -125,6 +129,21 @@ namespace prySistemaEscolar
             }
             return tabla;
         }
+        public void LimpiarPanel(Panel panelDestino)
+        {
+            foreach (Control control in panelDestino.Controls)
+            {
+                if (control is TextBox)
+                {
+                    ((TextBox)control).Clear();
+                }
+                else if (control is ComboBox)
+                {
+                    ((ComboBox)control).SelectedIndex = 0;
+                }
+            }
+        }
+
 
     }
 }
