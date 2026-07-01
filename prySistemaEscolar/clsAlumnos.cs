@@ -52,7 +52,7 @@ namespace prySistemaEscolar
                 {
                     // Unimos las 4 tablas mediante INNER JOIN para mostrar descripciones claras en el Grid
 
-                    string sql = "SELECT A.matricula AS Matricula, " +
+                    string sql = "SELECT A.matricula AS Matrícula, " +
                                  "A.nombreAlumno AS Nombre, " +
                                  "A.apellidoP AS 'A. Paterno', " +
                                  "A.apellidoM AS 'A. Materno', " +
@@ -143,7 +143,44 @@ namespace prySistemaEscolar
                 }
             }
         }
-
+        public DataTable Consultar()
+        {
+            tabla = new DataTable();
+            try
+            {
+                clsConexion conexionBD = new clsConexion();
+                using (var conexion = conexionBD.AbrirConexion())
+                {
+                    string sql = "SELECT A.matricula AS Matrícula, " +
+                                 "A.nombreAlumno AS Nombre, " +
+                                 "A.apellidoP AS 'A. Paterno', " +
+                                 "A.apellidoM AS 'A. Materno', " +
+                                 "C.nombreCarrera AS Carrera, " +
+                                 "T.nombreTutor AS Tutor, " +
+                                 "U.vchnombreUsuario AS Usuario, " +
+                                 "U.vchpassword, " + // < - - AQUI SE AGREGA EL PASSWORD
+                                 "U.vchperfil, " +   // < - - AQUI SE AGREGA EL PERFIL
+                                 "A.direccion, A.telefono, A.correo, A.promedioBachillerato, A.idTutor, A.idCarrera, A.idUsuario " +
+                                 "FROM tblAlumnos A " +
+                                 "INNER JOIN tblCarreras C ON A.idCarrera = C.idCarrera " +
+                                 "INNER JOIN tblTutores T ON A.idTutor = T.idTutor " +
+                                 "INNER JOIN tblUsuarios U ON A.idUsuario = U.intidUsuario WHERE A.matricula LIKE @matricula;";
+                    using (var consultar = new MySqlCommand(sql, conexion))
+                    {
+                        consultar.Parameters.AddWithValue("@matricula", "%" + matricula + "%");
+                        using (consulta = new MySqlDataAdapter(consultar))
+                        {
+                            consulta.Fill(tabla);
+                        }//Libera el adaptador
+                    }//Libera la consulta
+                }//Libera la conexión
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en la conexión de la base de datos " + ex.Message);
+            }
+            return tabla;
+        }
 
     }
 }
