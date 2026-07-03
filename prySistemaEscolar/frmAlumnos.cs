@@ -147,8 +147,38 @@ namespace prySistemaEscolar
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Requiere asignar datos ",ex.Message);
+                MessageBox.Show("Requiere asignar datos ", ex.Message);
             }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Determinamos el tipo de operación
+                int tipoOperacion = idMatricula == 0 ? 0 : 1;
+
+                alumnos = new clsAlumnos();
+
+                // 1. Llenamos las propiedades del bloque Alumno
+                alumnos.Matricula = int.Parse(txtMatricula.Text);
+                alumnos.NombreAlumno = txtNombre.Text;
+                alumnos.ApellidoP = txtAPaterno.Text;
+                alumnos.ApellidoM = txtAMaterno.Text;
+                alumnos.Direccion = txtDireccion.Text;
+                alumnos.Telefono = txtTelefono.Text;
+                alumnos.Correo = txtCorreo.Text;
+                alumnos.PromedioBachillerato = decimal.Parse(txtPromedioBachiller.Text);
+                alumnos.IdCarrera = Convert.ToInt32(cmbCarrera.SelectedValue);
+                alumnos.IdTutor = Convert.ToInt32(cmbTutor.SelectedValue);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudieron guardar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }

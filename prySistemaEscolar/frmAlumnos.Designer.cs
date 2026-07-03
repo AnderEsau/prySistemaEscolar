@@ -200,6 +200,7 @@
             txtPassword.PlaceholderText = "Password";
             txtPassword.Size = new Size(216, 33);
             txtPassword.TabIndex = 2;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // txtUsuario
             // 
@@ -249,6 +250,7 @@
             btnGuardar.Size = new Size(96, 46);
             btnGuardar.TabIndex = 15;
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnNuevo
             // 
