@@ -172,6 +172,34 @@ namespace prySistemaEscolar
                 alumnos.IdCarrera = Convert.ToInt32(cmbCarrera.SelectedValue);
                 alumnos.IdTutor = Convert.ToInt32(cmbTutor.SelectedValue);
 
+                // 2. Llenamos las propiedades del bloque Usuario
+                alumnos.IdUsuario = idUsuario; //Será 0 si es nuevo, o el ID real si es update
+                alumnos.NombreUsuario = txtUsuario.Text;
+                alumnos.Password = txtPassword.Text;
+                alumnos.Perfil = cmbPerfil.Text;
+
+                string msg = "";
+
+                // Si es una modificación (tipoOperacion = 1), pedimos confimación como en carreras
+                if (tipoOperacion == 1)
+                {
+                    var resp = MessageBox.Show("¿Confirmar que deseas actualizar los datos de este alumno?", "ALERTA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resp == DialogResult.Yes)
+                    {
+                        msg = alumnos.GuardarActualizar(tipoOperacion);
+                        MessageBox.Show(msg, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                }
+                else //Si es nuevo (tipoOperacion = 0), se guarda directo
+                {
+                    msg = alumnos.GuardarActualizar(tipoOperacion);
+                    MessageBox.Show(msg, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                CargarGrid(); //Refrescamos la tabla del formulario para ver los cambios
+
+
 
             }
             catch (Exception ex)
