@@ -21,10 +21,17 @@ namespace prySistemaEscolar
         private int idTutor; //Foraneo
         private int idCarrera; //Foraneo
         private int idUsuario;
+        //Estos atributos agregamos para registrar el usuario
+        private string nombreUsuario;
+        private string password;
+        private string perfil;
+
 
         //Adaptador y tabla virtuales de la clase
         private MySqlDataAdapter consulta;
         private DataTable tabla;
+        private MySqlCommand comando;
+
 
         //Propiedades
         public int Matricula { get => matricula; set => matricula = value; }
@@ -38,6 +45,10 @@ namespace prySistemaEscolar
         public int IdTutor { get => idTutor; set => idTutor = value; }
         public int IdCarrera { get => idCarrera; set => idCarrera = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
+        public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
+        public string Password { get => password; set => password = value; }
+        public string Perfil { get => perfil; set => perfil = value; }
+
 
 
         //Metodo para cargar datos en el DataGrid
@@ -182,5 +193,86 @@ namespace prySistemaEscolar
             return tabla;
         }
 
+        public string GuardarActualizar(int tipoOperacion)
+        {
+            string msg = "";
+            clsConexion conexionBD = new clsConexion();
+
+            try
+            {
+                using (var conexion = conexionBD.AbrirConexion())
+                {
+                    using (var transaccion = conexion.BeginTransaction())
+                    {
+                        try
+                        {
+                            switch (tipoOperacion)
+                            {
+                                case 0: //NUEVO E INSERTAR
+                                        //Insertamos en la tabla tblusuarios
+                                    string sqlInsUser = "INSERT INTO tblUsuarios(vchnombreUsuario, vchpassword, vchperfil,vchestado) " +
+                                                        "VALUES(@nomUser, MD5(@pass), @perfil,'Activo'); SELECT LAST_INSERT_ID();";
+                                    int nuevoIdUsuario = 0;
+                                    using (comando = new MySqlCommand(sqlInsUser, conexion, transaccion))
+                                    {
+                                        comando.Parameters.AddWithValue("@nomUser", nombreUsuario);
+                                        comando.Parameters.AddWithValue("@pass", password);
+                                        comando.Parameters.AddWithValue("@perfil", perfil);
+                                        nuevoIdUsuario = Convert.ToInt32(comando.ExecuteScalar());
+                                    }
+
+                                    //PASO B: Insertar el alumno en tblalumnos vinculando el ID de usuario obtenido
+                                    string sqlInsAlumno = "INSERT INTO tblalumnos(matricula, idUsuario, nombreAlumno, apellidoP, apellidoM, direccion, telefono, correo, promedioBachillerato, idTutor, idCarrera) " +
+                                                          "VALUES (@matricula, @idUsuario, @nombre, @apP, @apM, @dir, @tel, @correo, @prom, @idTutor, @idCarrera);";
+
+                                    using (comando = new MySqlCommand(sqlInsAlumno, conexion, transaccion))
+                                    {
+                                        comando.Parameters.AddWithValue("@matricula", matricula);
+                                        comando.Parameters.AddWithValue("@idUsuario", nuevoIdUsuario);
+                                        comando.Parameters.AddWithValue("@nombre", nombreAlumno);
+                                        comando.Parameters.AddWithValue("@apP", apellidoP);
+                                        comando.Parameters.AddWithValue("@apM", apellidoM);
+                                        comando.Parameters.AddWithValue("@dir", direccion);
+                                        comando.Parameters.AddWithValue("@tel", telefono);
+                                        comando.Parameters.AddWithValue("@correo", correo);
+                                        comando.Parameters.AddWithValue("@prom", promedioBachillerato);
+                                        comando.Parameters.AddWithValue("@idTutor", idTutor);
+                                        comando.Parameters.AddWithValue("@idCarrera", idCarrera);
+
+                                        comando.ExecuteNonQuery();
+                                    }
+                                    msg = "El alumno y sus credenciales se guardaron correctamente.";
+                                    break;
+
+
+
+                            }
+
+                            // Si todo se ejectó sin errores en el switch, confirmamos los cambios en la BD
+                            transaccion.Commit();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            // Si algo falló (en el usuario o en el alumno), deshacemos todo para evitar inconsistencias
+                            transaccion.Rollback();
+                            throw new Exception("Error en la operación. Se cancelaron los cambios: " + ex.Message);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                msg = "Error al guardar o actualizar el registro: " + ex.Message;
+            }
+            return msg;
+
+        }//Finaliza el método de guardar nuevo o alguna modificación
+
+
+
+
+
     }
+
 }
