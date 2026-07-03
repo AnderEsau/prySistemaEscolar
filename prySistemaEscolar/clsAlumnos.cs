@@ -244,6 +244,42 @@ namespace prySistemaEscolar
                                     msg = "El alumno y sus credenciales se guardaron correctamente.";
                                     break;
 
+                                case 1: // ACTUALIZAR
+                                        // Paso A: Actualizar la tabla de usuarios utilizando el ID que recuperamos en el clic del Grid
+                                    string sqlUpdUser = "UPDATE tblusuarios SET vchnombreUsuario = @nomUser, vchperfil = @perfil " +
+                                                            "WHERE intidUsuario = @idUsuario;";
+
+                                    using (comando = new MySqlCommand(sqlUpdUser, conexion, transaccion))
+                                    {
+                                        comando.Parameters.AddWithValue("@idUsuario", idUsuario);
+                                        comando.Parameters.AddWithValue("@nomUser", nombreUsuario);
+                                        comando.Parameters.AddWithValue("@perfil", perfil);
+
+                                        comando.ExecuteNonQuery();
+                                    }
+
+                                    // Paso B: Actualizar los datos del expediente en tblalumnos mediante su matrícula
+                                    string sqlUpdAlumno = "UPDATE tblalumnos SET nombreAlumno = @nombre, apellidoP = @apP, apellidoM = @apM, " +
+                                                          "direccion = @dir, telefono = @tel, correo = @correo, promedioBachillerato = @prom, " +
+                                                          "idTutor = @idTutor, idCarrera = @idCarrera WHERE matricula = @matricula;";
+
+                                    using (comando = new MySqlCommand(sqlUpdAlumno, conexion, transaccion))
+                                    {
+                                        comando.Parameters.AddWithValue("@matricula", matricula);
+                                        comando.Parameters.AddWithValue("@nombre", nombreAlumno);
+                                        comando.Parameters.AddWithValue("@apP", apellidoP);
+                                        comando.Parameters.AddWithValue("@apM", apellidoM);
+                                        comando.Parameters.AddWithValue("@dir", direccion);
+                                        comando.Parameters.AddWithValue("@tel", telefono);
+                                        comando.Parameters.AddWithValue("@correo", correo);
+                                        comando.Parameters.AddWithValue("@prom", promedioBachillerato);
+                                        comando.Parameters.AddWithValue("@idTutor", idTutor);
+                                        comando.Parameters.AddWithValue("@idCarrera", idCarrera);
+                                        comando.ExecuteNonQuery();
+                                    }
+
+                                    msg = "Los datos del alumno se actualizaron correctamente.";
+                                    break;
 
 
                             }
