@@ -142,7 +142,7 @@ namespace prySistemaEscolar
             dgvAlumnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             try
             {
-                alumnos.Matricula =int.Parse(txtMatriculaAlumno.Text);
+                alumnos.Matricula = int.Parse(txtMatriculaAlumno.Text);
                 dgvAlumnos.DataSource = alumnos.Consultar();
             }
             catch (Exception ex)
@@ -206,7 +206,36 @@ namespace prySistemaEscolar
             {
                 MessageBox.Show("No se pudieron guardar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            var respuesta = MessageBox.Show($"¿Estás completamente seguro de eliminar permanentemente al alumno con Matrícula :{idMatricula}?\nEsta acción borrará también su cuenta de usuario.",
+                                    "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+
+            if (respuesta == DialogResult.Yes)
+            {
+                try
+                {
+                    alumnos = new clsAlumnos();
+
+                    alumnos.Matricula = idMatricula;
+                    alumnos.IdUsuario = idUsuario;
+
+                    string resultado = alumnos.Eliminar();
+
+                    MessageBox.Show(resultado, "Registro Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    CargarGrid();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error al intentar eliminar el registro: " + ex.Message,
+                                    "Error Operacional", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
     }
 }
