@@ -326,7 +326,13 @@ namespace prySistemaEscolar
                                 comando.Parameters.AddWithValue("@matricula", matricula);
                                 comando.ExecuteNonQuery();
                             }
-
+                            //Eliminamos el usuario
+                            string sqlDelUsuario = "DELETE FROM tblusuarios WHERE intidUsuario = @idUsuario;";
+                            using (comando = new MySqlCommand(sqlDelUsuario, conexion, transaccion))
+                            {
+                                comando.Parameters.AddWithValue("@idUsuario", idUsuario);
+                                comando.ExecuteNonQuery();
+                            }
 
                         }
                         catch (Exception ex)
