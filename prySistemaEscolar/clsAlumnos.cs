@@ -333,11 +333,18 @@ namespace prySistemaEscolar
                                 comando.Parameters.AddWithValue("@idUsuario", idUsuario);
                                 comando.ExecuteNonQuery();
                             }
+                            //Si en ambas se elimina correctamente
+                            transaccion.Commit();
+                            msg = "El alumno y sus credenciales de usuario han sido eliminados del sistema.";
+
 
                         }
                         catch (Exception ex)
                         {
 
+                            //Si algo falla, deshacemos la operación para no dejar datos huérfanos
+                            transaccion.Rollback();
+                            throw new Exception("No se pudo completar la eliminación. Cambios revertidos: " + ex.Message);
                         }
                     }
                 }
@@ -350,9 +357,7 @@ namespace prySistemaEscolar
 
             return msg;
         }
-
-
-
+      
 
     }
 
