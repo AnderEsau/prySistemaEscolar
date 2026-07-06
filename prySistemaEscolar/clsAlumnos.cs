@@ -306,6 +306,45 @@ namespace prySistemaEscolar
         }//Finaliza el método de guardar nuevo o alguna modificación
 
 
+        public string Eliminar()
+        {
+            string msg = "";
+            clsConexion conexionBD = new clsConexion();
+
+            try
+            {
+                using (var conexion = conexionBD.AbrirConexion())
+                {
+                    using (var transaccion = conexion.BeginTransaction())
+                    {
+                        try
+                        {
+                            //Eliminamos alumnos
+                            string sqlDelAlumno = "DELETE FROM tblalumnos WHERE matricula = @matricula;";
+                            using (comando = new MySqlCommand(sqlDelAlumno, conexion, transaccion))
+                            {
+                                comando.Parameters.AddWithValue("@matricula", matricula);
+                                comando.ExecuteNonQuery();
+                            }
+
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                msg = "Error de conexión al eliminar: " + ex.Message;
+            }
+
+            return msg;
+        }
+
 
 
 
