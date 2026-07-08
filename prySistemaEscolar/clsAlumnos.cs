@@ -209,7 +209,7 @@ namespace prySistemaEscolar
                             switch (tipoOperacion)
                             {
                                 case 0: //NUEVO E INSERTAR
-                                        //Insertamos en la tabla tblusuarios
+                                        //1.- Insertamos en la tabla tblusuarios
                                     string sqlInsUser = "INSERT INTO tblUsuarios(vchnombreUsuario, vchpassword, vchperfil,vchestado) " +
                                                         "VALUES(@nomUser, MD5(@pass), @perfil,'Activo'); SELECT LAST_INSERT_ID();";
                                     int nuevoIdUsuario = 0;
@@ -218,10 +218,10 @@ namespace prySistemaEscolar
                                         comando.Parameters.AddWithValue("@nomUser", nombreUsuario);
                                         comando.Parameters.AddWithValue("@pass", password);
                                         comando.Parameters.AddWithValue("@perfil", perfil);
-                                        nuevoIdUsuario = Convert.ToInt32(comando.ExecuteScalar());
+                                        nuevoIdUsuario = Convert.ToInt32(comando.ExecuteScalar()); //2.- Recuperamos el id de usuario
                                     }
 
-                                    //PASO B: Insertar el alumno en tblalumnos vinculando el ID de usuario obtenido
+                                    //PASO 3: Insertar el alumno en tblalumnos vinculando el ID de usuario obtenido
                                     string sqlInsAlumno = "INSERT INTO tblalumnos(matricula, idUsuario, nombreAlumno, apellidoP, apellidoM, direccion, telefono, correo, promedioBachillerato, idTutor, idCarrera) " +
                                                           "VALUES (@matricula, @idUsuario, @nombre, @apP, @apM, @dir, @tel, @correo, @prom, @idTutor, @idCarrera);";
 
@@ -239,7 +239,7 @@ namespace prySistemaEscolar
                                         comando.Parameters.AddWithValue("@idTutor", idTutor);
                                         comando.Parameters.AddWithValue("@idCarrera", idCarrera);
 
-                                        comando.ExecuteNonQuery();
+                                        comando.ExecuteNonQuery();//Paso 4
                                     }
                                     msg = "El alumno y sus credenciales se guardaron correctamente.";
                                     break;
@@ -285,7 +285,8 @@ namespace prySistemaEscolar
                             }
 
                             // Si todo se ejectó sin errores en el switch, confirmamos los cambios en la BD
-                            transaccion.Commit();
+                            //5.- Se valida que todo haya sido correcto
+                            transaccion.Commit();//6.- Se confirma el guardado en las dos tablas
 
                         }
                         catch (Exception ex)
@@ -294,7 +295,7 @@ namespace prySistemaEscolar
                             transaccion.Rollback();
                             throw new Exception("Error en la operación. Se cancelaron los cambios: " + ex.Message);
                         }
-                    }
+                    }//Se finaliza la transacción
                 }
             }
             catch (Exception ex)

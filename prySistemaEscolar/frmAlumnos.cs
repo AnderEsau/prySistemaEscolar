@@ -162,10 +162,10 @@ namespace prySistemaEscolar
 
                 // 1. Llenamos las propiedades del bloque Alumno
                 alumnos.Matricula = int.Parse(txtMatricula.Text);
-                alumnos.NombreAlumno = txtNombre.Text;
-                alumnos.ApellidoP = txtAPaterno.Text;
-                alumnos.ApellidoM = txtAMaterno.Text;
-                alumnos.Direccion = txtDireccion.Text;
+                alumnos.NombreAlumno = string.IsNullOrEmpty(txtNombre.Text)?null:txtNombre.Text;
+                alumnos.ApellidoP = string.IsNullOrEmpty(txtAPaterno.Text)?null:txtAPaterno.Text;
+                alumnos.ApellidoM = string.IsNullOrEmpty(txtAMaterno.Text)?null:txtAMaterno.Text ;
+                alumnos.Direccion = string.IsNullOrEmpty(txtDireccion.Text)?null:txtDireccion.Text;
                 alumnos.Telefono = txtTelefono.Text;
                 alumnos.Correo = txtCorreo.Text;
                 alumnos.PromedioBachillerato = decimal.Parse(txtPromedioBachiller.Text);
@@ -174,9 +174,9 @@ namespace prySistemaEscolar
 
                 // 2. Llenamos las propiedades del bloque Usuario
                 alumnos.IdUsuario = idUsuario; //Será 0 si es nuevo, o el ID real si es update
-                alumnos.NombreUsuario = txtUsuario.Text;
-                alumnos.Password = txtPassword.Text;
-                alumnos.Perfil = cmbPerfil.Text;
+                alumnos.NombreUsuario = string.IsNullOrEmpty(txtUsuario.Text)?null:txtUsuario.Text;
+                alumnos.Password = string.IsNullOrEmpty(txtPassword.Text)?null:txtPassword.Text;
+                alumnos.Perfil = string.IsNullOrEmpty(cmbPerfil.Text)?null:cmbPerfil.Text;
 
                 string msg = "";
 
