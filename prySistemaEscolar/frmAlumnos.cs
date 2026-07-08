@@ -130,7 +130,7 @@ namespace prySistemaEscolar
             txtMatricula.Focus();
         }
 
-        private void txtNombreAlumno_TextChanged(object sender, EventArgs e)
+        private void txtMatriculaAlumno_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMatriculaAlumno.Text))
             {

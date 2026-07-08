@@ -44,11 +44,11 @@
             txtPassword = new TextBox();
             txtUsuario = new TextBox();
             pnlDocente = new Panel();
+            txtPuesto = new TextBox();
             txtCorreo = new TextBox();
             txtTelefono = new TextBox();
             txtNombre = new TextBox();
             txtClave = new TextBox();
-            txtPuesto = new TextBox();
             pcbLogo = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvDocentes).BeginInit();
             pnlUsuario.SuspendLayout();
@@ -74,6 +74,7 @@
             txtClaveDocente.PlaceholderText = "Buscar por Clave";
             txtClaveDocente.Size = new Size(227, 35);
             txtClaveDocente.TabIndex = 29;
+            txtClaveDocente.TextChanged += txtClaveDocente_TextChanged;
             // 
             // dgvDocentes
             // 
@@ -102,6 +103,7 @@
             dgvDocentes.RowTemplate.Height = 35;
             dgvDocentes.Size = new Size(870, 156);
             dgvDocentes.TabIndex = 28;
+            dgvDocentes.SelectionChanged += dgvDocentes_SelectionChanged;
             // 
             // btnEliminar
             // 
@@ -112,6 +114,7 @@
             btnEliminar.Size = new Size(96, 46);
             btnEliminar.TabIndex = 27;
             btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnGuardar
             // 
@@ -122,6 +125,7 @@
             btnGuardar.Size = new Size(96, 46);
             btnGuardar.TabIndex = 26;
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnNuevo
             // 
@@ -132,6 +136,7 @@
             btnNuevo.Size = new Size(96, 46);
             btnNuevo.TabIndex = 25;
             btnNuevo.UseVisualStyleBackColor = true;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // lblUsuario
             // 
@@ -208,6 +213,15 @@
             pnlDocente.Size = new Size(522, 137);
             pnlDocente.TabIndex = 21;
             // 
+            // txtPuesto
+            // 
+            txtPuesto.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            txtPuesto.Location = new Point(18, 87);
+            txtPuesto.Name = "txtPuesto";
+            txtPuesto.PlaceholderText = "Puesto";
+            txtPuesto.Size = new Size(238, 33);
+            txtPuesto.TabIndex = 7;
+            // 
             // txtCorreo
             // 
             txtCorreo.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
@@ -220,7 +234,7 @@
             // txtTelefono
             // 
             txtTelefono.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            txtTelefono.Location = new Point(17, 87);
+            txtTelefono.Location = new Point(269, 48);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.PlaceholderText = "Teléfono";
             txtTelefono.Size = new Size(239, 33);
@@ -243,15 +257,6 @@
             txtClave.PlaceholderText = "Clave";
             txtClave.Size = new Size(239, 33);
             txtClave.TabIndex = 0;
-            // 
-            // txtPuesto
-            // 
-            txtPuesto.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            txtPuesto.Location = new Point(269, 48);
-            txtPuesto.Name = "txtPuesto";
-            txtPuesto.PlaceholderText = "Puesto";
-            txtPuesto.Size = new Size(238, 33);
-            txtPuesto.TabIndex = 7;
             // 
             // pcbLogo
             // 
