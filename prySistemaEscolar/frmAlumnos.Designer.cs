@@ -272,7 +272,7 @@
             txtMatriculaAlumno.PlaceholderText = "Buscar por matrícula";
             txtMatriculaAlumno.Size = new Size(227, 35);
             txtMatriculaAlumno.TabIndex = 18;
-            txtMatriculaAlumno.TextChanged += txtNombreAlumno_TextChanged;
+            txtMatriculaAlumno.TextChanged += txtMatriculaAlumno_TextChanged;
             // 
             // dgvAlumnos
             // 
