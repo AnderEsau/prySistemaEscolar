@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace prySistemaEscolar
 {
@@ -40,7 +41,59 @@ namespace prySistemaEscolar
         public string Password { get => password; set => password = value; }
         public string Perfil { get => perfil; set => perfil = value; }
 
-        
+        //Metodo para cargar datos en el DataGrid
+        public DataTable CargarDataGrid()
+        {
+            tabla = new DataTable();
+
+            try
+            {
+                clsConexion conexionBD = new clsConexion();
+                using (var conexion = conexionBD.AbrirConexion())
+                {
+                    // Unimos las 2 tablas mediante INNER JOIN para mostrar descripciones claras en el Grid
+
+                    string sql = "SELECT D.claveDocente AS Clave, " +
+                                 "D.nombreDocente AS Nombre, " +
+                                 "D.puesto AS Puesto, " +
+                                 "U.vchpassword, " + // < - - AQUI SE AGREGA EL PASSWORD
+                                 "U.vchperfil, " +   // < - - AQUI SE AGREGA EL PERFIL
+                                 "U.vchnombreUsuario AS Usuario, " +
+                                 " D.telefono, D.correo, D.idUsuario " +
+                                 "FROM tblDocentes D " +
+                                 "INNER JOIN tblUsuarios U ON D.idUsuario = U.intidUsuario;";
+                    using (consulta = new MySqlDataAdapter(sql, conexion))
+                    {
+                        consulta.Fill(tabla);
+                    }//Liberar la consulta
+
+                }//Liberar la conexión externa automáticamente
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en la conexión al cargar catálogo de alumnos: " + ex.Message);
+            }
+            return tabla;
+        }
+
+
+        public void LimpiarPanel(Panel panelDestino)
+        {
+            foreach (Control control in panelDestino.Controls)
+            {
+                if (control is TextBox)
+                {
+                    ((TextBox)control).Clear();
+                }
+                else if (control is ComboBox)
+                {
+                    ((ComboBox)control).SelectedIndex = 0;
+                }
+            }
+        }
+
+
+
         public DataTable Consultar()
         {
             tabla = new DataTable();

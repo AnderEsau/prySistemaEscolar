@@ -239,4 +239,5 @@
         private TextBox txtNombreTutor;
         private PictureBox pcbLogo;
     }
+
 }
