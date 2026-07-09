@@ -22,11 +22,47 @@ namespace prySistemaEscolar
             CargarGrid();
         }
 
+        //Metodo para cargar el DataGridView
+        public void CargarGrid()
+        {
+            docentes = new clsDocentes();
+            dgvDocentes.DataSource = null;
+            dgvDocentes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            try
+            {
+                //Asignamos la tabla virtual de la clase directamente al control visual
+                dgvDocentes.DataSource = docentes.CargarDataGrid();
+                dgvDocentes.Columns["Usuario"].Visible = false;
+                dgvDocentes.Columns["vchpassword"].Visible = false;
+                dgvDocentes.Columns["vchperfil"].Visible = false;
+                dgvDocentes.Columns["idUsuario"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
 
         private void txtClaveDocente_TextChanged(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(txtClaveDocente.Text))
+            {
+                CargarGrid();
+                return;
+            }
+            docentes = new clsDocentes();
+            dgvDocentes.DataSource = null;
+            dgvDocentes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            try
+            {
+                docentes.Clave = int.Parse(txtClaveDocente.Text);
+                dgvDocentes.DataSource = docentes.Consultar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Requiere asignar datos ", ex.Message);
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
