@@ -23,7 +23,6 @@ namespace prySistemaEscolar
         }
 
 
-
         private void txtClaveDocente_TextChanged(object sender, EventArgs e)
         {
 
