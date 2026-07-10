@@ -229,6 +229,57 @@ namespace prySistemaEscolar
 
         }//Finaliza el método de guardar nuevo o alguna modificación 
 
+        public string Eliminar()
+        {
+            string msg = "";
+            clsConexion conexionBD = new clsConexion();
+
+            try
+            {
+                using (var conexion = conexionBD.AbrirConexion())
+                {
+                    using (var transaccion = conexion.BeginTransaction())
+                    {
+                        try
+                        {
+                            //Eliminamos Docentes
+                            string sqlDelDocente = "DELETE FROM tbldocentes WHERE claveDocente = @claveD;";
+                            using (comando = new MySqlCommand(sqlDelDocente, conexion, transaccion))
+                            {
+                                comando.Parameters.AddWithValue("@claveD", clave);
+                                comando.ExecuteNonQuery();
+                            }
+                            //Eliminamos el usuario
+                            string sqlDelUsuario = "DELETE FROM tblusuarios WHERE intidUsuario = @idUsuario;";
+                            using (comando = new MySqlCommand(sqlDelUsuario, conexion, transaccion))
+                            {
+                                comando.Parameters.AddWithValue("@idUsuario", idUsuario);
+                                comando.ExecuteNonQuery();
+                            }
+                            //Si en ambas se elimina correctamente
+                            transaccion.Commit();
+                            msg = "El docente y sus credenciales de usuario han sido eliminados del sistema.";
+
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                            //Si algo falla, deshacemos la operación para no dejar datos huérfanos
+                            transaccion.Rollback();
+                            throw new Exception("No se pudo completar la eliminación. Cambios revertidos: " + ex.Message);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                msg = "Error de conexión al eliminar: " + ex.Message;
+            }
+
+            return msg;
+        }
 
     }
 }
