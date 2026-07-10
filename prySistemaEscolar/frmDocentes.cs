@@ -83,7 +83,29 @@ namespace prySistemaEscolar
 
         private void dgvDocentes_SelectionChanged(object sender, EventArgs e)
         {
+            try
+            {
+                //Esto es para poder saber si es nuevo o vamos a actualizar
+                idClave = int.Parse(dgvDocentes.CurrentRow.Cells["Clave"].Value.ToString());
+                idUsuario = int.Parse(dgvDocentes.CurrentRow.Cells["idUsuario"].Value.ToString());
 
+                //Esto es para la tabla Docentes
+                txtClave.Text = idClave.ToString();
+                txtNombre.Text = dgvDocentes.CurrentRow.Cells["Nombre"].Value.ToString();
+                txtPuesto.Text = dgvDocentes.CurrentRow.Cells["Puesto"].Value.ToString();
+                txtTelefono.Text = dgvDocentes.CurrentRow.Cells["telefono"].Value.ToString();
+                txtCorreo.Text = dgvDocentes.CurrentRow.Cells["correo"].Value.ToString();
+
+                //Esto es para la tabla Usuarios
+                txtUsuario.Text = dgvDocentes.CurrentRow.Cells["Usuario"].Value.ToString();
+                txtPassword.Text = dgvDocentes.CurrentRow.Cells["vchpassword"].Value.ToString();
+                cmbPerfil.Text = dgvDocentes.CurrentRow.Cells["vchperfil"].Value.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mapear los datos seleccionados: " + ex.Message);
+            }
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
