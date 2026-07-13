@@ -28,6 +28,9 @@ namespace prySistemaEscolar
         private DataTable tabla;
         private MySqlCommand comando;
 
+        //Chismoso
+        private int chismoso=0;
+
 
         //Propiedades
         public int Clave { get => clave; set => clave = value; }
@@ -39,6 +42,7 @@ namespace prySistemaEscolar
         public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
         public string Password { get => password; set => password = value; }
         public string Perfil { get => perfil; set => perfil = value; }
+        public int Chismoso { get => chismoso; set => chismoso = value; }
 
         //Metodo para cargar datos en el DataGrid
         public DataTable CargarDataGrid()
@@ -215,6 +219,7 @@ namespace prySistemaEscolar
                         {
                             // Si algo falló (en el usuario o en el docente), deshacemos todo para evitar inconsistencias
                             transaccion.Rollback();
+                            chismoso = 1;
                             throw new Exception("Error en la operación. Se cancelaron los cambios: " + ex.Message);
                         }
                     }//Se finaliza la transacción

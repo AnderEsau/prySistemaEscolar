@@ -32,6 +32,8 @@ namespace prySistemaEscolar
         private DataTable tabla;
         private MySqlCommand comando;
 
+        //Chismoso
+        private int chismoso=0;
 
         //Propiedades
         public int Matricula { get => matricula; set => matricula = value; }
@@ -48,6 +50,7 @@ namespace prySistemaEscolar
         public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
         public string Password { get => password; set => password = value; }
         public string Perfil { get => perfil; set => perfil = value; }
+        public int Chismoso { get => chismoso; set => chismoso = value; }
 
 
 
@@ -293,6 +296,7 @@ namespace prySistemaEscolar
                         {
                             // Si algo falló (en el usuario o en el alumno), deshacemos todo para evitar inconsistencias
                             transaccion.Rollback();
+                            chismoso = 1;
                             throw new Exception("Error en la operación. Se cancelaron los cambios: " + ex.Message);
                         }
                     }//Se finaliza la transacción
