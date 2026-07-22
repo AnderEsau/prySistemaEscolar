@@ -10,6 +10,7 @@ namespace prySistemaEscolar
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            /*
             ApplicationConfiguration.Initialize();
             using (frmLogin login = new frmLogin())
             {
@@ -18,6 +19,10 @@ namespace prySistemaEscolar
                     Application.Run(new frmPrincipal());
                 }
             }
+           */
+
+            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+            Application.Run(new reporte());
         }
     }
 }

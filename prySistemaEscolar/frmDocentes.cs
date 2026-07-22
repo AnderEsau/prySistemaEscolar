@@ -106,7 +106,11 @@ namespace prySistemaEscolar
                     MessageBox.Show(msg, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                CargarGrid(); //Refrescamos la tabla del formulario para ver los cambios
+                if (docentes.Chismoso==0)
+                {
+                    CargarGrid(); //Refrescamos la tabla del formulario para ver los cambios
+                }
+                
 
 
 
