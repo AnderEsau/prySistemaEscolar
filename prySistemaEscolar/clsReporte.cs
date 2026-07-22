@@ -25,14 +25,14 @@ namespace prySistemaEscolar
                 using (var conexion = conexionBD.AbrirConexion())
                 {
                     string sql = "SELECT A.matricula AS Matricula, " +
-                                "A.nombreAlumno AS Nombre, " +
-                                "A.apellidoP AS 'A. Paterno, " +
-                                "A.apellidoM AS 'A. Materno, " +
-                                "C.nombreCarrera AS Carrera, " +
-                                "A.promedioBachillerato AS Promedio " +
-                                "FROM tblAlumnos A " +
-                                "INNER JOIN tblcarreras C ON A.idCarrera = C.idCarrera " +
-                                "WHERE A.promedioBachillerato <= 8.0;";
+                                 "A.nombreAlumno AS Nombre, " +
+                                 "A.apellidoP AS 'A. Paterno', " +
+                                 "A.apellidoM AS 'A. Materno', " +
+                                 "C.nombreCarrera AS Carrera, " +
+                                 "A.promedioBachillerato AS Promedio " +
+                                 "FROM tblAlumnos A " +
+                                 "INNER JOIN tblcarreras C ON A.idCarrera = C.idCarrera " +
+                                 "WHERE A.promedioBachillerato <= 8.0;";
 
                     using (consulta = new MySqlDataAdapter(sql, conexion))//CONDICION
                     {
@@ -57,14 +57,14 @@ namespace prySistemaEscolar
                 using (var conexion = conexionBD.AbrirConexion())
                 {
                     string sql = "SELECT A.matricula AS Matricula, " +
-                                "A.nombreAlumno AS Nombre, " +
-                                "A.apellidoP AS 'A. Paterno, " +
-                                "A.apellidoM AS 'A. Materno, " +
-                                "A.promedioBachillerato AS Promedio " +
-                                "T.nombreTutor" +
-                                "FROM tblAlumnos A" +
-                                "INNER JOIN tbltutores T ON A.idTutor = T.idTutor" +
-                                "WHERE A.promedioBachillerato >= 9.0;";
+                                 "A.nombreAlumno AS Nombre, " +
+                                 "A.apellidoP AS 'A. Paterno', " +
+                                 "A.apellidoM AS 'A. Materno', " +
+                                 "A.promedioBachillerato AS Promedio, " +
+                                 "T.nombreTutor " +
+                                 "FROM tblAlumnos A " +
+                                 "INNER JOIN tbltutores T ON A.idTutor = T.idTutor " +
+                                 "WHERE A.promedioBachillerato >= 9.0;";
 
                     using (consulta = new MySqlDataAdapter(sql, conexion))//CONDICION
                     {
@@ -164,7 +164,7 @@ namespace prySistemaEscolar
                                     bool alternarFila = true;
                                     foreach (DataRow fila in tabla.Rows)
                                     {
-                                        string colorFondo = alternarFila ? "#E6EBF5" : "#FFFFFFF";
+                                        string colorFondo = alternarFila ? "#E6EBF5" : "#FFFFFF";
 
                                         for (int i = 0; i < totalcolumas; i++)
                                         {
