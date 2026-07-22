@@ -24,7 +24,7 @@ namespace prySistemaEscolar
                 clsConexion conexionBD = new clsConexion();
                 using (var conexion = conexionBD.AbrirConexion())
                 {
-                    string sql = "SELEC A.matricula AS Matricula, " +
+                    string sql = "SELECT A.matricula AS Matricula, " +
                                 "A.nombreAlumno AS Nombre, " +
                                 "A.apellidoP AS 'A. Paterno, " +
                                 "A.apellidoM AS 'A. Materno, " +
@@ -56,7 +56,7 @@ namespace prySistemaEscolar
                 clsConexion conexionBD = new clsConexion();
                 using (var conexion = conexionBD.AbrirConexion())
                 {
-                    string sql = "SELEC A.matricula AS Matricula, " +
+                    string sql = "SELECT A.matricula AS Matricula, " +
                                 "A.nombreAlumno AS Nombre, " +
                                 "A.apellidoP AS 'A. Paterno, " +
                                 "A.apellidoM AS 'A. Materno, " +
